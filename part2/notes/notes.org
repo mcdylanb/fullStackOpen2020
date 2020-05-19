@@ -1,0 +1,12 @@
+#+TITLE: Notes
+* Learned that we can use app with props by declaring props in rendering
+* also we can use the map method to print out all the content
+** example at: src/index.js line:3
+- but doing this though will make a nasty error
+  - stating that "each child in an array or iterator should have a unique 'key' prop"
+- Solution:
+  #+begin_export javascript
+  <li key={note.id}>
+  {note.content}
+  </li>
+  #+end_export
