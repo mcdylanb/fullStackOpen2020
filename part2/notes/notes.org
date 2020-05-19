@@ -10,3 +10,5 @@
   {note.content}
   </li>
   #+end_export
+* in importing you can omit the .js
+** import Note from './components/Note'
