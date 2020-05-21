@@ -30,10 +30,13 @@ const Part = ({ name, exercises }) => {
 }
 
 const Course = ({ course }) => {
+    const total = course.parts.reduce((a,b) =>
+                                      ({exercises: a.exercises + b.exercises}));
     return (
         <div>
           <Header course = {course}/>
           <Content course = {course}/>
+        <strong>Total of  {total.exercises} exercises</strong>
         </div>
     )
 }
