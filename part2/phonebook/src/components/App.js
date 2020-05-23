@@ -8,9 +8,23 @@ const App = () => {
 
     const addName = (event) => {
         event.preventDefault()
+        const personObject = {
+            name: newName,
+            id: persons.length + 1,
+        }
+        nameChecker()
+        setPersons(persons.concat(personObject))
+        setNewName('')
+    }
 
+    const handleChangeName = (event) => {
+        console.log(event.target.value)
+        setNewName(event.target.value)
+    }
+
+    const nameChecker = () => {
         console.log("running add name")
-        for (let i = 0; i > persons.length; i++){
+        for (let i = 0; i < persons.length; i++){
             console.log("inside the for loop")
             if (newName in persons[i]){
                 console.log("its in here")
@@ -19,18 +33,6 @@ const App = () => {
             }
         }
 
-        const personObject = {
-            name: newName,
-            id: persons.length + 1,
-        }
-
-        setPersons(persons.concat(personObject))
-        setNewName('')
-    }
-
-    const handleChangeName = (event) => {
-        console.log(event.target.value)
-        setNewName(event.target.value)
     }
 
     return (
