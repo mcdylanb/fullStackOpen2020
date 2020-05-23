@@ -17,6 +17,7 @@ const App = () => {
             if (persons[i].name === newName){
                 console.log("its in here")
                 alert(`${newName} is already used`)
+                setNewName('')
             }else {
                 console.log("its not in here")
                 setPersons(persons.concat(personObject))
