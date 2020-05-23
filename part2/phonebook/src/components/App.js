@@ -8,10 +8,22 @@ const App = () => {
 
     const addName = (event) => {
         event.preventDefault()
+
+        console.log("running add name")
+        for (let i = 0; i > persons.length; i++){
+            console.log("inside the for loop")
+            if (newName in persons[i]){
+                console.log("its in here")
+            }else {
+                console.log("its not in here")
+            }
+        }
+
         const personObject = {
             name: newName,
             id: persons.length + 1,
         }
+
         setPersons(persons.concat(personObject))
         setNewName('')
     }
