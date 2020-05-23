@@ -26,13 +26,15 @@ const App = () => {
         console.log("running add name")
         for (let i = 0; i < persons.length; i++){
             console.log("inside the for loop")
-            if (newName in persons[i]){
+            console.log( typeof newName)
+            console.log("checking persons", persons[i].name)
+            if (persons[i].name === newName){
                 console.log("its in here")
             }else {
                 console.log("its not in here")
             }
         }
-
+        console.log("end of checker")
     }
 
     return (
