@@ -19,6 +19,11 @@ const App = () => {
             </div>
           </form>
           <h2>Numbers</h2>
+          <ul>
+        {persons.map(persons =>
+                     <li> {persons.name} {persons.id}</li>
+                    )}
+          </ul>
         </div>
     )
 }
