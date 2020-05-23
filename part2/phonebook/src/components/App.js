@@ -12,9 +12,17 @@ const App = () => {
             name: newName,
             id: persons.length + 1,
         }
-        nameChecker()
-        setPersons(persons.concat(personObject))
-        setNewName('')
+
+        for (let i = 0; i < persons.length; i++){
+            if (persons[i].name === newName){
+                console.log("its in here")
+                alert(`${newName} is already used`)
+            }else {
+                console.log("its not in here")
+                setPersons(persons.concat(personObject))
+                setNewName('')
+            }
+        }
     }
 
     const handleChangeName = (event) => {
@@ -22,20 +30,6 @@ const App = () => {
         setNewName(event.target.value)
     }
 
-    const nameChecker = () => {
-        console.log("running add name")
-        for (let i = 0; i < persons.length; i++){
-            console.log("inside the for loop")
-            console.log( typeof newName)
-            console.log("checking persons", persons[i].name)
-            if (persons[i].name === newName){
-                console.log("its in here")
-            }else {
-                console.log("its not in here")
-            }
-        }
-        console.log("end of checker")
-    }
 
     return (
         <div>
