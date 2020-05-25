@@ -1,60 +1,74 @@
 import React, {useState} from 'react'
 
 const App = () => {
-    const [ persons, setPersons ] = useState([
-        { name: 'Arto Hellas' }
-    ])
-    const [newName, setNewName ] = useState('')
+  const [ persons, setPersons ] = useState([
+    { name: 'Arto Hellas' }
+  ])
+  const [newName, setNewName ] = useState('')
+  const [newNumber, setNewNumber ] = useState('')
 
-    const addName = (event) => {
-        event.preventDefault()
-        const personObject = {
-            name: newName,
-            id: persons.length + 1,
-        }
-
-        for (let i = 0; i < persons.length; i++){
-            if (persons[i].name === newName){
-                console.log("its in here")
-                alert(`${newName} is already used`)
-                setNewName('')
-            }else {
-                console.log("its not in here")
-                setPersons(persons.concat(personObject))
-                setNewName('')
-            }
-        }
+  const addPerson = (event) => {
+    event.preventDefault()
+    const personObject = {
+      name: newName,
+      number: newNumber,
+      id: persons.length + 1,
     }
 
-    const handleChangeName = (event) => {
-        console.log(event.target.value)
-        setNewName(event.target.value)
+    for (let i = 0; i < persons.length; i++){
+      if (persons[i].name === newName){
+        alert(`${newName} is already used`)
+        setNewName('')
+        setNewNumber('')
+      }else {
+        setPersons(persons.concat(personObject))
+        setNewName('')
+        setNewNumber('')
+
+      }
     }
+  }
+
+  const handleChangeName = (event) => {
+    console.log(event.target.value)
+    setNewName(event.target.value)
+  }
+
+  const handleChangeNumber = (event) => {
+    console.log(event.target.value)
+    setNewNumber(event.target.value)
+  }
 
 
-    return (
+  return (
+    <div>
+
+      <h2> Phonebook</h2>
+      <form onSubmit={addPerson}>
         <div>
-
-          <h2> Phonebook</h2>
-          <form onSubmit={addName}>
-            <div>
-              name: <input
-                      value={newName}
-                      onChange ={handleChangeName}
-                    />
-            </div>
-            <div>
-              <button type="submit">add</button>
-            </div>
-          </form>
-          <h2>Numbers</h2>
-          <ul>
-            {persons.map(persons =>
-                         <li key={persons.id}> {persons.name} </li>
-                        )}
-          </ul>
+          name: <input
+                  value={newName}
+                  onChange ={handleChangeName}
+                />
         </div>
-    )
+        <div>
+          number: <input
+          value={newNumber}
+          onChange ={handleChangeNumber}
+                  />
+        </div>
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      <ul>
+        {persons.map(persons =>
+                     <li key={persons.id}> {persons.name} </li>
+                    )}
+      </ul>
+    </div>
+  )
 }
 
 export default App
