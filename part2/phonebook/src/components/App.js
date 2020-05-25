@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 
 const Person = ({ name, number }) => {
   return(
-    <ul>
-      <li>NAME:{name}</li>
-      <li>NUMBER:{number}</li>
-    </ul>
+    <tr>
+      <td>{name}</td>
+      <td>{number}</td>
+    </tr>
   )
 }
 
@@ -71,11 +71,11 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <ul>
+      <table>
         {persons.map(persons =>
                      <Person key={persons.id} name={persons.name} number={persons.number}/>
                     )}
-      </ul>
+      </table>
     </div>
   )
 }
