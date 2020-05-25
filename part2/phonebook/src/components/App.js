@@ -20,6 +20,16 @@ const App = () => {
   const [newName, setNewName ] = useState('')
   const [newNumber, setNewNumber ] = useState('')
 
+  const checkIfNameUsed = () => {
+    let answer = false
+    for (let i = 0; i < persons.length; i++){
+      if (persons[i].name === newName){
+        answer = true
+      }
+    }
+    return answer
+  }
+
   const addPerson = (event) => {
     event.preventDefault()
     const personObject = {
@@ -27,20 +37,15 @@ const App = () => {
       number: newNumber,
       id: persons.length + 1,
     }
-
-    for (let i = 0; i < persons.length; i++){
-      if (persons[i].name === newName){
-        console.log("the function passes the if")
+    console.log(checkIfNameUsed())
+    if (checkIfNameUsed()) {
         alert(`${newName} is already used`)
         setNewName('')
         setNewNumber('')
-        break;
-      }else {
-        console.log("the fucntion passes the else")
+    }else {
         setPersons(persons.concat(personObject))
         setNewName('')
         setNewNumber('')
-      }
     }
   }
 
