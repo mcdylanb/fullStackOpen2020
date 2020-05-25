@@ -64,7 +64,7 @@ const App = () => {
       <h2>Numbers</h2>
       <ul>
         {persons.map(persons =>
-                     <li key={persons.id}> {persons.name} </li>
+                     <li key={persons.id}> {persons.name} {persons.number} </li>
                     )}
       </ul>
     </div>
