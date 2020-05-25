@@ -11,7 +11,11 @@ const Person = ({ name, number }) => {
 
 const App = () => {
   const [ persons, setPersons ] = useState([
-    { name: 'Arto Hellas' }
+    {
+      name: 'Arto Hellas',
+      number: '911',
+      id: 1
+    }
   ])
   const [newName, setNewName ] = useState('')
   const [newNumber, setNewNumber ] = useState('')
@@ -26,14 +30,16 @@ const App = () => {
 
     for (let i = 0; i < persons.length; i++){
       if (persons[i].name === newName){
+        console.log("the function passes the if")
         alert(`${newName} is already used`)
         setNewName('')
         setNewNumber('')
+        break;
       }else {
+        console.log("the fucntion passes the else")
         setPersons(persons.concat(personObject))
         setNewName('')
         setNewNumber('')
-
       }
     }
   }
