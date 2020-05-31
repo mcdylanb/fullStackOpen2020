@@ -1,81 +1,78 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
 const Person = ({ name, number }) => {
-  return(
+  return (
     <tr>
       <td>{name}</td>
       <td>{number}</td>
     </tr>
-  )
-}
+  );
+};
 
 const App = () => {
-  const [ persons, setPersons ] = useState([
+  const [persons, setPersons] = useState([
     {
-      name: 'Arto Hellas',
-      number: '911',
+      name: "Arto Hellas",
+      number: "911",
       id: 1
     }
-  ])
-  const [newName, setNewName ] = useState('')
-  const [newNumber, setNewNumber ] = useState('')
+  ]);
+  const [newName, setNewName] = useState("");
+  const [newNumber, setNewNumber] = useState("");
+  const [showAll, setShowAll] = useState(true);
 
   const checkIfNameUsed = () => {
-    let answer = false
-    for (let i = 0; i < persons.length; i++){
-      if (persons[i].name === newName){
-        answer = true
+    let answer = false;
+    for (let i = 0; i < persons.length; i++) {
+      if (persons[i].name === newName) {
+        answer = true;
       }
     }
-    return answer
-  }
+    return answer;
+  };
 
-  const addPerson = (event) => {
-    event.preventDefault()
+  const addPerson = event => {
+    event.preventDefault();
     const personObject = {
       name: newName,
       number: newNumber,
-      id: persons.length + 1,
-    }
-    console.log(checkIfNameUsed())
+      id: persons.length + 1
+    };
+    console.log(checkIfNameUsed());
     if (checkIfNameUsed()) {
-        alert(`${newName} is already used`)
-        setNewName('')
-        setNewNumber('')
-    }else {
-        setPersons(persons.concat(personObject))
-        setNewName('')
-        setNewNumber('')
+      alert(`${newName} is already used`);
+      setNewName("");
+      setNewNumber("");
+    } else {
+      setPersons(persons.concat(personObject));
+      setNewName("");
+      setNewNumber("");
     }
-  }
+  };
 
-  const handleChangeName = (event) => {
-    console.log(event.target.value)
-    setNewName(event.target.value)
-  }
+  const handleChangeName = event => {
+    console.log(event.target.value);
+    setNewName(event.target.value);
+  };
 
-  const handleChangeNumber = (event) => {
-    console.log(event.target.value)
-    setNewNumber(event.target.value)
-  }
+  const handleChangeNumber = event => {
+    console.log(event.target.value);
+    setNewNumber(event.target.value);
+  };
 
+  const personsToShow = showAll
+    ? persons
+    : persons.filter(note => note.import === true);
 
   return (
     <div>
-
       <h2> Phonebook</h2>
       <form onSubmit={addPerson}>
         <div>
-          name: <input
-                  value={newName}
-                  onChange ={handleChangeName}
-                />
+          name: <input value={newName} onChange={handleChangeName} />
         </div>
         <div>
-          number: <input
-          value={newNumber}
-          onChange ={handleChangeNumber}
-                  />
+          number: <input value={newNumber} onChange={handleChangeNumber} />
         </div>
         <div>
           <button type="submit">add</button>
@@ -83,12 +80,16 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       <table>
-        {persons.map(persons =>
-                     <Person key={persons.id} name={persons.name} number={persons.number}/>
-                    )}
+        {personsToShow.map(persons => (
+          <Person
+            key={persons.id}
+            name={persons.name}
+            number={persons.number}
+          />
+        ))}
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
