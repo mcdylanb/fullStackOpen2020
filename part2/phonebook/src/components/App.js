@@ -80,13 +80,21 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       <table>
-        {personsToShow.map(persons => (
-          <Person
-            key={persons.id}
-            name={persons.name}
-            number={persons.number}
-          />
-        ))}
+        <thead>
+          <tr>
+            <td> Name</td>
+            <td>Number</td>
+          </tr>
+        </thead>
+        <tbody>
+          {personsToShow.map(persons => (
+            <Person
+              key={persons.id}
+              name={persons.name}
+              number={persons.number}
+            />
+          ))}
+        </tbody>
       </table>
     </div>
   );
