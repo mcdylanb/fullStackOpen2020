@@ -67,6 +67,12 @@ const App = () => {
   return (
     <div>
       <h2> Phonebook</h2>
+      <div>
+        <button onClick={() => setShowAll(!showAll)}>
+          show {showAll ? "important" : "all"}
+        </button>
+      </div>
+
       <form onSubmit={addPerson}>
         <div>
           name: <input value={newName} onChange={handleChangeName} />
@@ -78,7 +84,7 @@ const App = () => {
           <button type="submit">add</button>
         </div>
       </form>
-      <h2>Numbers</h2>
+      <h2>Phonebook</h2>
       <table>
         <thead>
           <tr>
